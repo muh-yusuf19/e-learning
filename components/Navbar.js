@@ -47,7 +47,7 @@ const Navbar = () => {
         }
         id="navigation"
       >
-        <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col">
+        <div className="lg:inline-flex gap-4 lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col">
           <Link href="/">
             <div
               className={
@@ -60,39 +60,11 @@ const Navbar = () => {
               Home
             </div>
           </Link>
-          <Link href="/pendahuluan">
+          <Link href="/panel">
             <div className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-blue-500 items-center justify-center hover:bg-blue-500 hover:text-white hover:cursor-pointer">
-              Pendahuluan
+              Panel
             </div>
           </Link>
-          <Link href="/kikd">
-            <div className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-blue-500 items-center justify-center hover:bg-blue-500 hover:text-white hover:cursor-pointer">
-              KI & KD
-            </div>
-          </Link>
-          <Link href="/materi">
-            <div className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-blue-500 items-center justify-center hover:bg-blue-500 hover:text-white">
-              Materi
-            </div>
-          </Link>
-          <a
-            href="#"
-            className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-blue-500 items-center justify-center hover:bg-blue-500 hover:text-white"
-          >
-            <span>Video</span>
-          </a>
-          <a
-            href="#"
-            className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-blue-500 items-center justify-center hover:bg-blue-500 hover:text-white"
-          >
-            <span>Latihan</span>
-          </a>
-          <a
-            href="#"
-            className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-blue-500 items-center justify-center hover:bg-blue-500 hover:text-white"
-          >
-            <span>Forum Diskusi</span>
-          </a>
         </div>
       </div>
     </nav>
