@@ -1,22 +1,35 @@
-import Head from "next/head"
 import Navbar from "../components/Navbar"
 import Link from "next/link"
+import { useAuth } from "../context/AuthContext"
+import { useRouter } from "next/router"
+import { useEffect } from "react"
 
 export default function Home() {
+  const { login, currentUser } = useAuth()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (currentUser) {
+      router.push("/panel")
+    }
+  }, [currentUser])
+
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-start">
+    <div className="min-h-screen w-full h-full flex flex-col items-center justify-start">
       <Navbar />
-      <div className="relative flex-auto w-full flex flex-col xl:flex-row justify-center items-center px-6 py-4 md:py-6 lg:px-12 gap-6 md:gap-12">
-        <img
-          src="/image/asset1.png"
-          className="z-10 flex-auto w-full "
-          alt=""
-        />
-        <div className="z-10 flex-auto w-full xl:w-1/3 font-quicksand lg:px-12">
-          <h1 className="tracking-wider font-bold text-xl md:text-3xl uppercase">
+      <div className="flex-auto grid grid-cols-1 md:grid-cols-2">
+        <div className="my-auto">
+          <img
+            src="/image/asset1.png"
+            className="z-10 flex-auto w-full "
+            alt=""
+          />
+        </div>
+        <div className="z-10 my-auto px-6 lg:px-12">
+          <h1 className="tracking-wider font-bold text-xl md:text-3xl text-gray-700 uppercase">
             Selamat datang di website kimia
           </h1>
-          <h1 className="tracking-wider font-bold text-xl md:text-3xl text-blue-600 uppercase mb-6">
+          <h1 className="tracking-wider font-bold text-xl md:text-3xl text-indigo-800 uppercase mb-6">
             Materi asam basa
           </h1>
           <p className="text-sm md:text-lg mb-6">
@@ -24,15 +37,12 @@ export default function Home() {
             sumber belajar untuk SMA/MA
           </p>
 
-          <Link href="/panel">
-            <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:-translate-y-2 hover:bg-blue-400 transform transition">
-              Login
-            </button>
-          </Link>
-        </div>
-
-        <div className="z-0 absolute top-0 right-0 opacity-25">
-          <img src="/image/logo2.png" className="w-1/3 " />
+          <button
+            onClick={login}
+            className="px-4 py-2 bg-indigo-800 text-white rounded-lg hover:-translate-y-2 hover:bg-indigo-600 transform transition"
+          >
+            Login
+          </button>
         </div>
       </div>
     </div>

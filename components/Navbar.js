@@ -11,9 +11,8 @@ const Navbar = () => {
 
   const router = useRouter()
 
-  console.log(router.pathname)
   return (
-    <nav className="w-full flex items-center p-2 bg-white flex-wrap shadow-md">
+    <nav className="w-full flex items-center justify-around p-2 bg-white flex-wrap shadow-md">
       <a href="#" className="p-2 mr-4 inline-flex items-center">
         <svg
           viewBox="0 0 24 24"
@@ -42,26 +41,26 @@ const Navbar = () => {
       <div
         className={
           isOpen
-            ? "w-full lg:inline-flex lg:flex-grow lg:w-auto"
-            : "hidden w-full lg:inline-flex lg:flex-grow lg:w-auto"
+            ? "w-full lg:inline-flex lg:w-auto"
+            : "hidden w-full lg:inline-flex lg:w-auto"
         }
         id="navigation"
       >
-        <div className="lg:inline-flex gap-4 lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col">
+        <div className="lg:inline-flex gap-4 lg:flex-row lg:ml-auto lg:items-center items-start flex flex-col">
           <Link href="/">
             <div
               className={
-                "lg:inline-flex lg:w-auto w-full px-3 py-2 rounded items-center justify-center hover:bg-blue-500 hover:text-white hover:cursor-pointer " +
+                "lg:inline-flex lg:w-auto w-full px-6 py-2 rounded-full items-center justify-center hover:bg-indigo-800 hover:text-white hover:cursor-pointer " +
                 (router.pathname == "/"
-                  ? "bg-blue-500 text-white"
-                  : "text-blue-500")
+                  ? "bg-indigo-800 text-white"
+                  : "text-indigo-800")
               }
             >
               Home
             </div>
           </Link>
           <Link href="/panel">
-            <div className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-blue-500 items-center justify-center hover:bg-blue-500 hover:text-white hover:cursor-pointer">
+            <div className="lg:inline-flex lg:w-auto w-full px-6 py-2 rounded-full text-indigo-800 items-center justify-center hover:bg-indigo-800 hover:text-white hover:cursor-pointer">
               Panel
             </div>
           </Link>
