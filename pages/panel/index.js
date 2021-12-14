@@ -9,19 +9,13 @@ const pendahuluan = () => {
   const { currentUser } = useAuth()
   const router = useRouter()
 
-  useEffect(() => {
-    if (!currentUser) {
-      router.push("/")
-    } else {
-      console.log("signed in")
-    }
-  }, [currentUser])
-
-  if (!currentUser) {
-    // user is signed out or still being checked.
-    // don't render anything
-    return null
-  }
+  // useEffect(() => {
+  //   if (!currentUser) {
+  //     router.push("/")
+  //   } else {
+  //     console.log("signed in")
+  //   }
+  // }, [currentUser])
 
   return (
     <div className="flex h-screen overflow-hidden">
