@@ -1,33 +1,11 @@
-import { useState, useEffect, useRef, Fragment } from "react"
-import { useRouter } from "next/dist/client/router"
-import Link from "next/link"
-import React from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  faArchway,
-  faClipboardCheck,
-  faTachometerAlt,
-  faTasks,
-  faThumbtack,
-} from "@fortawesome/free-solid-svg-icons"
-import SidebarLinkGroup from "./SidebarLinkGroup"
-import { AuthProvider, useAuth } from "../context/AuthContext"
+import { useEffect, useRef, React } from "react"
+import Menulist from "./Partial/Menulist"
+import Userinfo from "./Partial/Userinfo"
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
-  const location = useRouter()
-  const { pathname } = location
-
   const trigger = useRef(null)
   const sidebar = useRef(null)
 
-  // const storedSidebarExpanded = () => {
-  //   if (typeof window !== "undefined") {
-  //     window.localStorage.getItem("sidebar-expanded")
-  //   }
-  // }
-  const [sidebarExpanded, setSidebarExpanded] = useState(false)
-
-  const { logout, currentUser } = useAuth()
   // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }) => {
@@ -44,26 +22,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     return () => document.removeEventListener("click", clickHandler)
   })
 
-  // close if the esc key is pressed
-  useEffect(() => {
-    const keyHandler = ({ keyCode }) => {
-      if (!sidebarOpen || keyCode !== 27) return
-      setSidebarOpen(false)
-    }
-    document.addEventListener("keydown", keyHandler)
-    return () => document.removeEventListener("keydown", keyHandler)
-  })
-
-  useEffect(() => {
-    // localStorage.setItem("sidebar-expanded", sidebarExpanded)
-    // if (sidebarExpanded) {
-    //   document.querySelector("body").classList.add("sidebar-expanded")
-    // } else {
-    //   document.querySelector("body").classList.remove("sidebar-expanded")
-    // }
-    document.querySelector("body").classList.add("sidebar-expanded")
-  }, [sidebarExpanded])
-
   return (
     <>
       {/* Sidebar backdrop (mobile only) */}
@@ -78,12 +36,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-64 lg:sidebar-expanded:!w-64 2xl:!w-64 flex-shrink-0 bg-gray-800 p-4 transition-all duration-200 ease-in-out ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-72"
+        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 transform h-screen lg:overflow-y-auto no-scrollbar w-64 flex-shrink-0 bg-dark p-4 transition-all duration-200 ease-in-out ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-64"
         }`}
       >
         {/* Sidebar header */}
-        <div className="flex justify-between mb-10 pr-3 sm:px-2">
+        <div className="flex justify-between mb-6 pr-3 sm:px-2">
           {/* Close button */}
           <button
             ref={trigger}
@@ -103,293 +61,15 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           </button>
         </div>
 
-        {/* User */}
-        <div className="flex flex-col items-center gap-6 mb-8">
-          <div className="h-24 w-24 rounded-full bg-gray-600 border-2 border-white"></div>
-          <h1 className="text-base md:text-lg font-bold text-white">
-            {currentUser ? currentUser.name : "Your Name"}
-          </h1>
-        </div>
+        <Userinfo />
 
         {/* Links */}
-        <div className="space-y-4">
-          <h1 className="text-base md:text-lg font-bold text-white ml-3">
-            Website Kimia Berbasis MLR
-          </h1>
-          {/* Pages group */}
-          <div>
-            <h3 className="text-xs uppercase text-gray-500 font-semibold pl-3">
-              <span className="lg:sidebar-expanded:block 2xl:block">Pages</span>
-            </h3>
-            <ul className="mt-3">
-              {/* Pendahuluan */}
-              <li
-                className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 text-white hover:bg-gray-900 ${
-                  pathname === "/panel" && "bg-gray-900"
-                }`}
-              >
-                <Link href="/panel">
-                  <div
-                    className={`block hover:cursor-pointer truncate transition duration-150 ${
-                      pathname === "/panel" && "hover:text-gray-200"
-                    }`}
-                  >
-                    <div className="flex items-center">
-                      <FontAwesomeIcon
-                        icon={faArchway}
-                        fixedWidth
-                        className="text-indigo-600"
-                      />
-                      <span className="text-sm md:text-base 2xl:text-lg font-medium ml-3 duration-200">
-                        Pendahuluan
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              </li>
-              {/* KI & KD */}
-              <li
-                className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 text-white hover:bg-gray-900 ${
-                  pathname === "/panel/kikd" && "bg-gray-900"
-                }`}
-              >
-                <Link href="/panel/kikd">
-                  <div
-                    className={`block hover:cursor-pointer truncate transition duration-150 ${
-                      pathname === "/panel/kikd" && "hover:text-gray-200"
-                    }`}
-                  >
-                    <div className="flex items-center">
-                      <FontAwesomeIcon
-                        icon={faClipboardCheck}
-                        fixedWidth
-                        className="text-indigo-600"
-                      />
-                      <span className="text-sm md:text-base 2xl:text-lg font-medium ml-3 duration-200">
-                        KI & KD
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              </li>
-              {/* Indikator */}
-              <li
-                className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 text-white hover:bg-gray-900 ${
-                  pathname === "/panel/indikator" && "bg-gray-900"
-                }`}
-              >
-                <Link href="/panel/indikator">
-                  <div
-                    className={`block hover:cursor-pointer truncate transition duration-150 ${
-                      pathname === "/panel/indikator" && "hover:text-gray-200"
-                    }`}
-                  >
-                    <div className="flex items-center">
-                      <FontAwesomeIcon
-                        icon={faClipboardCheck}
-                        fixedWidth
-                        className="text-indigo-600"
-                      />
-                      <span className="text-sm md:text-base 2xl:text-lg font-medium ml-3 duration-200">
-                        Indikator
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              </li>
-              {/* Materi */}
-              <SidebarLinkGroup activecondition={pathname.includes("materi")}>
-                {(handleClick, open) => {
-                  return (
-                    <>
-                      <a
-                        className={`block text-gray-200 hover:text-white truncate transition duration-150 ${
-                          pathname.includes("panel") && "hover:text-gray-200"
-                        }`}
-                        onClick={(e) => {
-                          e.preventDefault()
-                          // sidebarExpanded
-                          //   ? handleClick()
-                          //   : setSidebarExpanded(true)
-                          handleClick()
-                          setSidebarExpanded(true)
-                        }}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center">
-                            <svg
-                              className="flex-shrink-0 h-6 w-6"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                className={`fill-current text-gray-600 ${
-                                  pathname.includes("materi") &&
-                                  "text-indigo-500"
-                                }`}
-                                d="M18.974 8H22a2 2 0 012 2v6h-2v5a1 1 0 01-1 1h-2a1 1 0 01-1-1v-5h-2v-6a2 2 0 012-2h.974zM20 7a2 2 0 11-.001-3.999A2 2 0 0120 7zM2.974 8H6a2 2 0 012 2v6H6v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5H0v-6a2 2 0 012-2h.974zM4 7a2 2 0 11-.001-3.999A2 2 0 014 7z"
-                              />
-                              <path
-                                className={`fill-current text-gray-400 ${
-                                  pathname.includes("materi") &&
-                                  "text-indigo-300"
-                                }`}
-                                d="M12 6a3 3 0 110-6 3 3 0 010 6zm2 18h-4a1 1 0 01-1-1v-6H6v-6a3 3 0 013-3h6a3 3 0 013 3v6h-3v6a1 1 0 01-1 1z"
-                              />
-                            </svg>
-                            <span className="text-sm md:text-base 2xl:text-lg font-medium ml-3 duration-200">
-                              Materi
-                            </span>
-                          </div>
-                          {/* Icon */}
-                          <div className="flex flex-shrink-0 ml-2">
-                            <svg
-                              className={`w-3 h-3 flex-shrink-0 ml-1 fill-current text-gray-400 ${
-                                open && "transform rotate-180"
-                              }`}
-                              viewBox="0 0 12 12"
-                            >
-                              <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-                            </svg>
-                          </div>
-                        </div>
-                      </a>
-                      <div className="lg:sidebar-expanded:block 2xl:block">
-                        <ul className={`pl-9 mt-1 ${!open && "hidden"}`}>
-                          {/* Pengantar */}
-                          <li className="mb-1 last:mb-0 hover:cursor-pointer">
-                            <Link href="/panel/materi/pengantar">
-                              <div
-                                className={
-                                  "block hover:text-gray-200 transition duration-150 truncate " +
-                                  (pathname.includes("pengantar")
-                                    ? "text-white"
-                                    : "text-gray-400")
-                                }
-                              >
-                                <span className="text-sm 2xl:text-base font-medium duration-200">
-                                  Pengantar
-                                </span>
-                              </div>
-                            </Link>
-                          </li>
-
-                          {/* Teori Arrhenius */}
-                          <li className="mb-1 last:mb-0 hover:cursor-pointer">
-                            <Link href="/panel/materi/teoriarrhenius">
-                              <div
-                                className={
-                                  "block hover:text-gray-200 transition duration-150 truncate " +
-                                  (pathname.includes("teoriarrhenius")
-                                    ? "text-white"
-                                    : "text-gray-400")
-                                }
-                              >
-                                <span className="text-sm 2xl:text-base font-medium duration-200">
-                                  Teori Arrhenius
-                                </span>
-                              </div>
-                            </Link>
-                          </li>
-
-                          {/* Teori Bronsted-Lorwry */}
-                          <li className="mb-1 last:mb-0 hover:cursor-pointer">
-                            <Link href="/panel/materi/teoribronstedlowry">
-                              <div
-                                className={
-                                  "block hover:text-gray-200 transition duration-150 truncate " +
-                                  (pathname.includes("teoribronstedlowry")
-                                    ? "text-white"
-                                    : "text-gray-400")
-                                }
-                              >
-                                <span className="text-sm 2xl:text-base font-medium duration-200">
-                                  Teori Bronsted-Lowry
-                                </span>
-                              </div>
-                            </Link>
-                          </li>
-
-                          {/* Teori Lewis */}
-                          <li className="mb-1 last:mb-0 hover:cursor-pointer">
-                            <Link href="/panel/materi/teorilewis">
-                              <div
-                                className={
-                                  "block hover:text-gray-200 transition duration-150 truncate " +
-                                  (pathname.includes("teorilewis")
-                                    ? "text-white"
-                                    : "text-gray-400")
-                                }
-                              >
-                                <span className="text-sm 2xl:text-base font-medium duration-200">
-                                  Teori Lewis
-                                </span>
-                              </div>
-                            </Link>
-                          </li>
-
-                          {/* Kesetimbangan */}
-                          <li className="mb-1 last:mb-0 hover:cursor-pointer">
-                            <Link href="/panel/materi/kesetimbangan">
-                              <div
-                                className={
-                                  "block hover:text-gray-200 transition duration-150 truncate " +
-                                  (pathname.includes("kesetimbangan")
-                                    ? "text-white"
-                                    : "text-gray-400")
-                                }
-                              >
-                                <span className="text-sm 2xl:text-base font-medium duration-200">
-                                  Kesetimbangan Kimia
-                                </span>
-                              </div>
-                            </Link>
-                          </li>
-
-                          {/* Derajat */}
-                          <li className="mb-1 last:mb-0 hover:cursor-pointer">
-                            <Link href="/panel/materi/derajat">
-                              <div
-                                className={
-                                  "block hover:text-gray-200 transition duration-150 truncate " +
-                                  (pathname.includes("derajat")
-                                    ? "text-white"
-                                    : "text-gray-400")
-                                }
-                              >
-                                <span className="text-sm 2xl:text-base font-medium duration-200">
-                                  Derajat Keasaman
-                                </span>
-                              </div>
-                            </Link>
-                          </li>
-
-                          {/* Indikator */}
-                          <li className="mb-1 last:mb-0 hover:cursor-pointer">
-                            <Link href="/panel/materi/indikatormateri">
-                              <div className="block text-gray-400 hover:text-gray-200 transition duration-150 truncate">
-                                <span className="text-sm 2xl:text-base font-medium duration-200">
-                                  Indikator Asam Basa
-                                </span>
-                              </div>
-                            </Link>
-                          </li>
-                        </ul>
-                      </div>
-                    </>
-                  )
-                }}
-              </SidebarLinkGroup>
-              {/* Messages */}
-              {/* Tasks */}
-              {/* Inbox */}
-              {/* Calendar */}
-              {/* Settings */}
-              {/* Utility */}
-            </ul>
-          </div>
+        <div className="space-y-2">
+          <h3 className="text-xs uppercase text-yellow-400 font-semibold mb-4">
+            Pages
+          </h3>
+          <Menulist />
         </div>
-
-        {/* Expand / collapse button */}
       </div>
     </>
   )

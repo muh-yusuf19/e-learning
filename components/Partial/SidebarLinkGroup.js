@@ -7,15 +7,15 @@ const SidebarLinkGroup = ({ children, activecondition }) => {
     setOpen(!open)
   }
   return (
-    <div>
-      <li
+    <>
+      <div
         className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 hover:cursor-pointer ${
           activecondition && "bg-gray-900"
         }`}
       >
         {children(handleClick, open)}
-      </li>
-    </div>
+      </div>
+    </>
   )
 }
 

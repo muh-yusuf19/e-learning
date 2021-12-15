@@ -7,18 +7,17 @@ import { createContext, useContext, useEffect, useState } from "react"
 import { auth } from "../src/config/firebase.config"
 import { useRouter } from "next/router"
 
-const AuthContext = createContext()
+const AuthContext = createContext({})
 
 export function useAuth() {
   return useContext(AuthContext)
 }
 
 export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState()
-
-  const provider = new GoogleAuthProvider()
+  const [currentUser, setCurrentUser] = useState(null)
 
   const login = () => {
+    const provider = new GoogleAuthProvider()
     signInWithPopup(auth, provider)
       .then((result) => {
         // The signed-in user info.

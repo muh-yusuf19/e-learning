@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { useState, useRef, useEffect } from "react"
 import { Menu, Transition } from "@headlessui/react"
-import { AuthProvider, useAuth } from "../context/AuthContext"
+import { AuthProvider, useAuth } from "../../context/AuthContext"
 
 const UserMenu = () => {
   const { logout, currentUser } = useAuth()
@@ -25,7 +25,7 @@ const UserMenu = () => {
             </Link>
           )}
         </Menu.Item>
-        <Menu.Item>
+        <Menu.Item className="overflow-hidden">
           {({ active }) => (
             <Link href="/">
               <p

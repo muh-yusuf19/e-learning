@@ -1,7 +1,6 @@
-import Link from "next/link"
+import { useAuth } from "../context/AuthContext"
 import { useRouter } from "next/router"
 import { useState, Fragment, useEffect } from "react"
-import { useAuth } from "../context/AuthContext"
 import Navbar from "../components/Navbar"
 import { useSpring, animated } from "react-spring"
 
@@ -35,7 +34,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="relative h-screen bg-dark w-full flex flex-col overflow-hidden">
+      <div className="relative h-screen bg-dark w-full flex flex-col overflow-x-hidden">
         <div className="absolute inset-0">
           <img src="/image/bg01.png" className="w-full h-full object-cover" />
         </div>

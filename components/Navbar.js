@@ -50,7 +50,7 @@ const Navbar = () => {
           <Link href="/">
             <div
               className={
-                "px-4 py-2 mt-2 text-sm font-semibold rounded-full md:mt-0 text-dark hover:text-dark focus:text-dark hover:bg-yellow-400 focus:bg-yellow-400 focus:outline-none focus:shadow-outline " +
+                "px-4 py-2 mt-2 text-sm font-semibold rounded-full md:mt-0 text-dark hover:cursor-pointer hover:text-dark focus:text-dark hover:bg-yellow-400 focus:bg-yellow-400 focus:outline-none focus:shadow-outline " +
                 (router.pathname == "/" ? "bg-yellow-400" : "")
               }
               href="#"
@@ -61,7 +61,7 @@ const Navbar = () => {
           <Link href="/panel">
             <div
               className={
-                "px-4 py-2 mt-2 text-sm font-semibold rounded-full md:mt-0 text-yellow-400 hover:text-dark focus:text-dark hover:bg-yellow-400 focus:bg-yellow-400 focus:outline-none focus:shadow-outline " +
+                "px-4 py-2 mt-2 text-sm font-semibold rounded-full md:mt-0 text-yellow-400 hover:cursor-pointer hover:text-dark focus:text-dark hover:bg-yellow-400 focus:bg-yellow-400 focus:outline-none focus:shadow-outline " +
                 (router.pathname == "panel" ? "bg-yellow-400" : "")
               }
             >

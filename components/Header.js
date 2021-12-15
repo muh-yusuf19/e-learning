@@ -1,7 +1,7 @@
 import React from "react"
-import UserMenu from "./UserMenu"
+import UserMenu from "./Partial/UserMenu"
 
-const Header = ({ sidebarOpen, setSidebarOpen }) => {
+const Header = ({ sidebarOpen, setSidebarOpen, animate, setAnimate }) => {
   return (
     <header className="sticky top-0 bg-white border-b border-gray-200 z-30">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -13,7 +13,9 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
               className="text-gray-500 hover:text-gray-600 lg:hidden"
               aria-controls="sidebar"
               aria-expanded={sidebarOpen}
-              onClick={() => setSidebarOpen(!sidebarOpen)}
+              onClick={() => {
+                setSidebarOpen(!sidebarOpen)
+              }}
             >
               <span className="sr-only">Open sidebar</span>
               <svg
@@ -30,8 +32,6 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
 
           {/* Header: Right side */}
           <div className="flex items-center">
-            {/*  Divider */}
-            <hr className="w-px h-6 bg-gray-200 mx-3" />
             <UserMenu />
           </div>
         </div>
