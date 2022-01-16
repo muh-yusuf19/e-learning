@@ -7,6 +7,9 @@ module.exports = {
       colors: {
         dark: "#171717",
       },
+      fontFamily: {
+        nunito: "'Nunito', sans-serif",
+      },
     },
   },
   variants: {

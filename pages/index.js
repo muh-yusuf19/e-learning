@@ -26,6 +26,7 @@ export default function Home() {
     },
     delay: 150,
   })
+
   useEffect(() => {
     if (currentUser) {
       router.push("/panel")
@@ -34,7 +35,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="relative h-screen bg-dark w-full flex flex-col overflow-x-hidden">
+      <div className="font-nunito relative h-screen bg-indigo-400 w-full flex flex-col overflow-x-hidden">
         <div className="absolute inset-0">
           <img src="/image/bg01.png" className="w-full h-full object-cover" />
         </div>
@@ -54,7 +55,7 @@ export default function Home() {
             <h1 className="tracking-wider font-bold text-lg md:text-3xl uppercase">
               Selamat datang di website kimia
             </h1>
-            <h1 className="tracking-wider font-bold text-lg md:text-3xl text-yellow-400 uppercase mb-6">
+            <h1 className="tracking-wider font-bold text-lg md:text-3xl text-indigo-800 uppercase mb-6">
               Materi asam basa
             </h1>
             <p className="text-sm md:text-lg mb-6">
@@ -64,7 +65,7 @@ export default function Home() {
 
             <button
               onClick={login}
-              className="px-4 py-2 bg-yellow-400 text-dark rounded-lg hover:-translate-y-2 hover:bg-yellow-300 transform transition"
+              className="px-6 py-2 bg-indigo-800 text-xs md:text-base text-white font-bold rounded-full hover:-translate-y-2 transform transition hover:bg-indigo-600"
             >
               Login
             </button>

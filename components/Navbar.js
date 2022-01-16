@@ -12,12 +12,14 @@ const Navbar = () => {
   const router = useRouter()
 
   return (
-    <div className="w-full text-gray-700 bg-dark bg-opacity-50 z-10">
-      <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+    <div className="w-full text-gray-700 z-10">
+      <div className="flex flex-col px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div className="p-4 flex flex-row items-center justify-between">
-          <div className="text-lg font-semibold tracking-widest text-yellow-400 bg-dark py-2 px-4 rounded-full uppercase hover:cursor-pointer">
-            Asam Basa
-          </div>
+          <Link href="/">
+            <div className="text-xs md:text-base font-bold text-indigo-800 bg-white py-2 px-4 rounded-full uppercase hover:cursor-pointer hover:-translate-y-2 transform transition">
+              Asam Basa
+            </div>
+          </Link>
           <button
             className="text-yellow-400 md:hidden rounded-lg focus:outline-none focus:shadow-outline"
             onClick={handleToggle}
@@ -44,16 +46,17 @@ const Navbar = () => {
         <nav
           className={
             (isOpen ? "flex" : "hidden") +
-            " flex-col flex-grow pb-4 md:pb-0 md:flex md:justify-end md:flex-row"
+            " flex-col flex-grow pb-4 md:pb-0 md:flex md:justify-end md:gap-6 md:flex-row"
           }
         >
           <Link href="/">
             <div
               className={
-                "px-4 py-2 mt-2 text-sm font-semibold rounded-full md:mt-0 text-dark hover:cursor-pointer hover:text-dark focus:text-dark hover:bg-yellow-400 focus:bg-yellow-400 focus:outline-none focus:shadow-outline " +
-                (router.pathname == "/" ? "bg-yellow-400" : "")
+                "px-6 py-2 mt-2 text-xs md:text-base font-bold rounded-full md:mt-0 hover:cursor-pointer hover:bg-indigo-600 hover:-translate-y-2 transform transition " +
+                (router.pathname == "/"
+                  ? "bg-indigo-800 text-white"
+                  : "text-white")
               }
-              href="#"
             >
               Home
             </div>
@@ -61,8 +64,10 @@ const Navbar = () => {
           <Link href="/panel">
             <div
               className={
-                "px-4 py-2 mt-2 text-sm font-semibold rounded-full md:mt-0 text-yellow-400 hover:cursor-pointer hover:text-dark focus:text-dark hover:bg-yellow-400 focus:bg-yellow-400 focus:outline-none focus:shadow-outline " +
-                (router.pathname == "panel" ? "bg-yellow-400" : "")
+                "px-6 py-2 mt-2 text-xs md:text-base font-bold rounded-full md:mt-0 hover:cursor-pointer hover:bg-indigo-600 hover:-translate-y-2 transform transition " +
+                (router.pathname == "bg-indigo-800 text-white"
+                  ? "bg-white"
+                  : "text-white")
               }
             >
               Panel

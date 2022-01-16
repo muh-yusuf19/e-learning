@@ -6,7 +6,7 @@ import { AuthProvider, useAuth } from "../../context/AuthContext"
 const UserMenu = () => {
   const { logout, currentUser } = useAuth()
   return (
-    <Menu as="div" className="relative">
+    <Menu as="div" className="relative text-xs md:text-sm ">
       <Menu.Button className="px-4 py-2 rounded-lg bg-indigo-800 text-white">
         {currentUser ? currentUser.email : "Your email"}
       </Menu.Button>

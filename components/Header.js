@@ -3,7 +3,7 @@ import UserMenu from "./Partial/UserMenu"
 
 const Header = ({ sidebarOpen, setSidebarOpen, animate, setAnimate }) => {
   return (
-    <header className="sticky top-0 bg-white border-b border-gray-200 z-30">
+    <header className="sticky top-0 shadow-lg z-30">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 -mb-px">
           {/* Header: Left side */}

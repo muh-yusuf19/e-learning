@@ -5,6 +5,7 @@ import { useTrail, animated } from "react-spring"
 import Sidebar from "../../components/Sidebar"
 import Header from "../../components/Header"
 import Background from "../../components/Partial/Background"
+import Mobilenav from "../../components/Mobilenav"
 
 const Trail = ({ children }) => {
   const items = [...children]
@@ -45,13 +46,13 @@ const pendahuluan = () => {
   // }, [currentUser])
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex min-h-screen w-full">
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
       <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        <div className="relative bg-dark w-full h-full px-6 lg:px-12 py-4">
+        <div className="relative h-full flex flex-col items-center justify-start gap-6 bg-indigo-400 px-4 sm:px-6 lg:px-8 py-8 w-full">
           <Background />
           {/* Page title */}
           <Trail>
@@ -80,6 +81,7 @@ const pendahuluan = () => {
             </div>
           </Trail>
         </div>
+        <Mobilenav />
       </div>
     </div>
   )

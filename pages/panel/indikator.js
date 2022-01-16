@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Header from "../../components/Header"
+import Mobilenav from "../../components/Mobilenav"
 import Sidebar from "../../components/Sidebar"
 
 const indikator = () => {
@@ -15,14 +16,14 @@ const indikator = () => {
 
         <div className="relative flex flex-col justify-start items-center w-full h-full px-2 md:px-4 lg:px-12 py-4 md:py-8 gap-4 xl:gap-12">
           {/* Page Title */}
-          <div className="bg-white px-4 py-2 z-10 rounded-lg shadow-lg">
-            <h1 className="z-10 text-indigo-800 text-center font-bold text-lg md:text-2xl uppercase">
+          <div className="bg-white px-4 py-2 rounded-lg shadow-lg">
+            <h1 className="text-indigo-800 text-center font-bold text-lg md:text-2xl uppercase">
               Indikator Pembelajaran
             </h1>
           </div>
 
           {/* Content 1 */}
-          <div className="z-10 gap-6 md:gap-12 w-full">
+          <div className="gap-6 md:gap-12 w-full">
             <div className="bg-white text-indigo-800 rounded-lg p-4 shadow-lg">
               <h1 className="font-bold text-center text-lg md:text-2xl">
                 Tujuan Pembelajaran
@@ -73,6 +74,7 @@ const indikator = () => {
             <img src="/image/logo2.png" className="w-full md:w-1/4 " />
           </div>
         </div>
+        <Mobilenav />
       </div>
     </div>
   )

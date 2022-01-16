@@ -5,15 +5,12 @@ import {
 } from "firebase/auth"
 import { createContext, useContext, useEffect, useState } from "react"
 import { auth } from "../src/config/firebase.config"
-import { useRouter } from "next/router"
 
-const AuthContext = createContext({})
+const AuthContext = createContext()
 
-export function useAuth() {
-  return useContext(AuthContext)
-}
+export const useAuth = () => useContext(AuthContext)
 
-export function AuthProvider({ children }) {
+export default function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null)
 
   const login = () => {
@@ -21,8 +18,8 @@ export function AuthProvider({ children }) {
     signInWithPopup(auth, provider)
       .then((result) => {
         // The signed-in user info.
-        // const user = result.user
-        // console.log(user)
+        const user = result.user
+        console.log(user)
       })
       .catch((error) => {
         console.log(error)
